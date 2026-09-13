@@ -1,0 +1,13 @@
+services:
+  deployguard:
+    build: .
+    ports: ["8080:8080"]
+    read_only: true
+    security_opt: ["no-new-privileges:true"]
+    healthcheck: { test: ["CMD", "wget", "-qO-", "http://localhost:8080/healthz"], interval: 15s, timeout: 3s, retries: 3 }
+  prometheus:
+    image: prom/prometheus:v2.54.1
+    command: ["--config.file=/etc/prometheus/prometheus.yml"]
+    volumes: ["./ops/prometheus.yml:/etc/prometheus/prometheus.yml:ro"]
+    ports: ["9090:9090"]
+    depends_on: { deployguard: { condition: service_healthy } }
