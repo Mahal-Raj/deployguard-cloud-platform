@@ -1,0 +1,6 @@
+apiVersion: v2
+name: deployguard
+description: SLO-driven progressive delivery control plane
+type: application
+version: 1.0.0
+appVersion: "1.0.0"
