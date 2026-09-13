@@ -13,7 +13,13 @@ jobs:
       - run: npm ci
       - run: npm run verify
       - uses: aquasecurity/trivy-action@0.28.0
-        with: { scan-type: fs, severity: HIGH,CRITICAL, exit-code: "1" }
+        with:
+          scan-type: fs
+          severity: HIGH,CRITICAL
+          exit-code: "1"
       - uses: docker/setup-buildx-action@v3
       - uses: docker/build-push-action@v6
-        with: { context: ., push: false, tags: deployguard:${{ github.sha }} }
+        with:
+          context: .
+          push: false
+          tags: deployguard:${{ github.sha }}
