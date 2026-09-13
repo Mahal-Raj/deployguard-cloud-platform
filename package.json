@@ -1,0 +1,14 @@
+{
+  "name": "deployguard-cloud-platform",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "SLO-driven progressive delivery control plane with production cloud blueprints",
+  "scripts": {
+    "start": "node src/server.mjs",
+    "test": "node --test",
+    "policy:check": "node scripts/policy-check.mjs",
+    "verify": "npm test && npm run policy:check"
+  },
+  "engines": { "node": ">=20" }
+}
