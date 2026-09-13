@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>DeployGuard | Progressive Delivery Control Plane</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="shell">
+    <aside>
+      <div class="brand"><span class="logo">DG</span><div><strong>DeployGuard</strong><small>Cloud control plane</small></div></div>
+      <nav><a class="active">Overview</a><a>Releases</a><a>Reliability</a><a>Infrastructure</a><a>Audit log</a></nav>
+      <div class="cluster"><span></span><div><strong>prod-ca-central-1</strong><small>Healthy · 12 nodes</small></div></div>
+    </aside>
+    <main>
+      <header><div><p class="eyebrow">PRODUCTION / PLATFORM</p><h1>Release command center</h1><p>Ship progressively. Promote on evidence. Roll back before customers notice.</p></div><button class="ghost" id="reset">Reset demo</button></header>
+      <section class="metrics" id="metrics"></section>
+      <section class="grid">
+        <article class="panel services"><div class="panel-head"><div><p class="eyebrow">WORKLOADS</p><h2>Service health</h2></div><span class="live">LIVE</span></div><div id="services"></div></article>
+        <article class="panel release"><div class="panel-head"><div><p class="eyebrow">PROGRESSIVE DELIVERY</p><h2>Canary controller</h2></div></div>
+          <label>Service<select id="service"><option>checkout-api</option><option>identity-api</option><option>recommendation-api</option></select></label>
+          <label>Candidate version<input id="version" value="v2.9.0" /></label>
+          <div class="actions"><button id="deploy">Start 10% canary</button><button class="secondary" id="advance">Advance traffic</button></div>
+          <div class="faults"><span>Failure lab</span><button data-fault="latency">Inject latency</button><button data-fault="errors">Inject errors</button></div>
+          <button class="evaluate" id="evaluate">Evaluate SLO gate</button><p class="message" id="message">No active release. Start a canary to exercise the controller.</p>
+        </article>
+      </section>
+      <section class="grid lower">
+        <article class="panel slo"><div class="panel-head"><div><p class="eyebrow">SERVICE LEVEL OBJECTIVES</p><h2>Automated release gates</h2></div></div><div id="slo"></div></article>
+        <article class="panel events"><div class="panel-head"><div><p class="eyebrow">AUDIT TRAIL</p><h2>Recent decisions</h2></div></div><div id="events"></div></article>
+      </section>
+    </main>
+  </div><script src="/app.js"></script>
+</body></html>
