@@ -1,0 +1,7 @@
+.git
+.github
+tests
+infra
+deploy
+README.md
+*.log
